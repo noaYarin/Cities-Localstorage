@@ -1,0 +1,33 @@
+body {
+    background-color: rgb(96, 194, 197);
+}
+
+.container {
+    margin: 30px;
+    height: 400px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: cursive;
+    background-color: rgb(108, 198, 201);
+
+}
+
+input,
+button {
+    margin: 8px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid black;
+    font-family: cursive;
+}
+
+button {
+    background-color: rgb(179, 108, 247);
+}
