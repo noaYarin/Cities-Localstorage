@@ -7,6 +7,7 @@ function cityName() {
     return inputName.val()
 }
 let arrayOfObjectsCitiesNames = [];
+
 addBtn.click(function () {
     let pCity = $('<p data-role="pName">');
     $(pCity).text(cityName());
@@ -17,13 +18,14 @@ addBtn.click(function () {
     resetFileds();
 
     renameBtn.click(function () {
-        let renameInput = $('<input data-role="renameInput">');
         let updateBtn = $('<button>').text("Update");
+        let renameInput = $('<input data-role="renameInput">');
         $(this).parent().append(renameInput, updateBtn);
 
         updateBtn.click(function () {
             pCity.text(renameInput.val());
             $(this).siblings('[data-role="renameInput"]').remove();
+            updateInLocalstorage();
             updateBtn.remove();
         });
 
@@ -35,12 +37,15 @@ addBtn.click(function () {
         deleteBtn.remove();
         pCity.remove();
     });
+
     saveBtn.click(function () {
         arrayOfObjectsCitiesNames.push({
             "city": pCity.text()
         });
         saveToLocalStorage();
     });
+
+
 });
 
 function saveToLocalStorage() {
@@ -52,3 +57,17 @@ function resetFileds() {
     $('[data-role="inputName"]').val("");
 }
 container.append(elem);
+
+function showListOfCities() {
+    let list = $('<div data-role="list">');
+    let showBtn = $('<button>').text('Show my storage');
+    list.append(showBtn);
+    showBtn.click(function () {
+        let pOfCities = $('<p data-role="pCities">');
+        pOfCities.text(localStorage.getItem('city'));
+        list.append(pOfCities)
+    });
+    container.append(list);
+}
+
+showListOfCities();
